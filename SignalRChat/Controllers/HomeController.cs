@@ -42,6 +42,8 @@ namespace SignalRChat.Controllers
 
                 ChatData.Instance.Save();
             }
+            else
+                return View("Index");
 
             return View(user );
         }

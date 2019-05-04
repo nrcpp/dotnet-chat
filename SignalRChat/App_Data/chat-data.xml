@@ -56,4 +56,18 @@
       <Users />
     </Contacts>
   </Users>
+  <Users>
+    <Name>12</Name>
+    <Status>offline</Status>
+    <History>
+      <Messages>
+        <Content>random content fad7-a924-4e7b-8879-74d60d0c357b</Content>
+        <Time>04.05.2019 20:59:09</Time>
+        <FromUser>random user &lt;b&gt;d37f-b60d-438b-8b06-5b62067d6408</FromUser>
+      </Messages>
+    </History>
+    <Contacts>
+      <Users />
+    </Contacts>
+  </Users>
 </ChatData>
