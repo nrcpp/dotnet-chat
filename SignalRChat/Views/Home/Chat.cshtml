@@ -26,6 +26,13 @@
                 $('#discussion').append('<li><strong>' + htmlEncode(name)
                     + '</strong>: ' + htmlEncode(message) + '</li>');
             };
+
+
+            // TODO: remove from prod. Just a test method to how client-server interaction works
+            chat.client.popup = function (msg) {
+                //alert(msg);
+            };
+                
             // Get the user name and store it to prepend to messages.
             var myName = prompt('Enter your name:', '');
             if (myName == '')
@@ -44,6 +51,8 @@
                     chat.server.send($('#displayname').val(), $('#message').val());
                     // Clear text box and reset focus for next comment.
                     $('#message').val('').focus();
+
+                    chat.server.popup('hello from ' + $('#displayname').val())
                 });
             });
         });

@@ -10,5 +10,10 @@ namespace SignalRChat
             // Call the addNewMessageToPage method to update clients.
             Clients.All.addNewMessageToPage(name, message);
         }
+
+        public void Popup(string msg)
+        {
+            Clients.Others.popup(msg);
+        }
     }
 }
