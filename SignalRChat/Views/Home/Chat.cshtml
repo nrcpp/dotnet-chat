@@ -1,7 +1,7 @@
 ﻿@{
     ViewBag.Title = "Chat";
 }
-<h2>Chat</h2>
+<h4 id="myname">Enter message</h4>
 <div class="container">
     <input type="text" id="message" />
     <input type="button" id="sendmessage" value="Send" />
@@ -27,9 +27,16 @@
                     + '</strong>: ' + htmlEncode(message) + '</li>');
             };
             // Get the user name and store it to prepend to messages.
-            $('#displayname').val(prompt('Enter your name:', ''));
+            var myName = prompt('Enter your name:', '');
+            if (myName == '')
+                myName = 'Anonymous';
+
+            $('#displayname').val(myName);
+            $('#myname').text(myName);
+
             // Set initial focus to message input box.
             $('#message').focus();
+
             // Start the connection.
             $.connection.hub.start().done(function () {
                 $('#sendmessage').click(function () {
