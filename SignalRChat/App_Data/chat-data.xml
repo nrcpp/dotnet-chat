@@ -70,4 +70,12 @@
       <Users />
     </Contacts>
   </Users>
+  <Users>
+    <Name>fds</Name>
+    <Status>offline</Status>
+    <History />
+    <Contacts>
+      <Users />
+    </Contacts>
+  </Users>
 </ChatData>
