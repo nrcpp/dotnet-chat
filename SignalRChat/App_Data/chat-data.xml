@@ -1,0 +1,59 @@
+<ChatData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Users>
+    <Name>sdad</Name>
+    <Status>offline</Status>
+    <History />
+    <Contacts>
+      <Users />
+    </Contacts>
+  </Users>
+  <Users>
+    <Name>sdc</Name>
+    <Status>offline</Status>
+    <History />
+    <Contacts>
+      <Users />
+    </Contacts>
+  </Users>
+  <Users>
+    <Name>dsa</Name>
+    <Status>offline</Status>
+    <History>
+      <Messages>
+        <Content>random content 250d-da26-4a85-9b40-5404b5f1b7ac</Content>
+        <Time>04.05.2019 19:56:27</Time>
+        <FromUser>random user &lt;b&gt;3ee3-2b62-4435-b629-bc274eaf70ec</FromUser>
+      </Messages>
+    </History>
+    <Contacts>
+      <Users />
+    </Contacts>
+  </Users>
+  <Users>
+    <Name>ewq</Name>
+    <Status>offline</Status>
+    <History>
+      <Messages>
+        <Content>random content 0ead-85d5-434f-b443-816d2ad3141d</Content>
+        <Time>04.05.2019 19:53:38</Time>
+        <FromUser>random user &lt;b&gt;0112-0ab6-4faf-b2d7-5da90ac67ee4</FromUser>
+      </Messages>
+      <Messages>
+        <Content>random content 572f-e0dd-491d-871c-0ce92a202730</Content>
+        <Time>04.05.2019 19:55:21</Time>
+        <FromUser>random user &lt;b&gt;a5bc-28f1-480c-9762-cca35b67b68b</FromUser>
+      </Messages>
+    </History>
+    <Contacts>
+      <Users />
+    </Contacts>
+  </Users>
+  <Users>
+    <Name>cxc</Name>
+    <Status>offline</Status>
+    <History />
+    <Contacts>
+      <Users />
+    </Contacts>
+  </Users>
+</ChatData>

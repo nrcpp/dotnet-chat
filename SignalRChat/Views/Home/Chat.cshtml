@@ -1,4 +1,5 @@
-﻿@{
+﻿@model SignalRChat.DAL.ChatData.User
+@{
     ViewBag.Title = "Chat";
 }
 <h4 id="myname">Enter message</h4>
@@ -19,7 +20,7 @@
     <script>
         $(function () {
             // Reference the auto-generated proxy for the hub.
-            var chat = $.connection.chatHub;
+            var chat = $.connection.siemplifyChatHub;
             // Create a function that the hub can call back to display messages.
             chat.client.addNewMessageToPage = function (name, message) {
                 // Add the message to the page.
@@ -32,9 +33,9 @@
             chat.client.popup = function (msg) {
                 //alert(msg);
             };
-                
+
             // Get the user name and store it to prepend to messages.
-            var myName = prompt('Enter your name:', '');
+            var myName = '@Model.Name'; //prompt('Enter your name:', '');
             if (myName == '')
                 myName = 'Anonymous';
 

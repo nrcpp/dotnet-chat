@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Web;
 using Microsoft.AspNet.SignalR;
+
+
 namespace SignalRChat
 {
-    public class ChatHub : Hub
+    // Core class that intercepts all messages from all clients
+    public class SiemplifyChatHub : Hub
     {
         public void Send(string name, string message)
         {
@@ -11,9 +14,14 @@ namespace SignalRChat
             Clients.All.addNewMessageToPage(name, message);
         }
 
-        public void Popup(string msg)
+        public void LoadHistory(string userName)
         {
-            Clients.Others.popup(msg);
+            //Clients.Others.popup(msg);
+        }
+
+        public void AddUser(string name)
+        {
+
         }
     }
 }

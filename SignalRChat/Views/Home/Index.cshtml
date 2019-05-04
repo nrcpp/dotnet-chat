@@ -1,0 +1,12 @@
+﻿@model SignalRChat.DAL.ChatData.User
+
+@{
+    ViewBag.Title = "Sign-in to Chat";
+}
+
+    <h4 id="myname">Enter your name:</h4>
+    <div class="container">
+        <input type="text" id="username" />
+        <input type="button" id="signin" value="Sign-In"
+               onclick="location.href='@Url.Action("Chat", "Home")?name=' + $('#username').val()" />
+    </div>
