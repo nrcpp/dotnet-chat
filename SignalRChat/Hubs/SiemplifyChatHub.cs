@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Concurrent;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
@@ -12,18 +13,34 @@ namespace SignalRChat
     public class SiemplifyChatHub : Hub
     {
         static ConcurrentDictionary<string, ChatData.User> _userConnections = new ConcurrentDictionary<string, ChatData.User>();
-        
-        public void Send(string name, string message)
+
+        private string GetClientIdByName(string name)
         {
+            return _userConnections.Where(u => u.Value.Name == name).FirstOrDefault().Value?.ConnectionId;            
+        }
+
+        public void Send(string name, string contact, string message)
+        {
+
             // Call the addNewMessageToPage method to update clients.
-            Clients.All.addNewMessageToPage(name, message);
+            if (contact == "All")
+                Clients.All.addNewMessageToPage(name, message);
+            else
+            {
+                var connectionId = GetClientIdByName(contact);
+                if (connectionId == null)
+                    return;
+
+                Clients.Client(connectionId).addNewMessageToPage(name, message);
+                Clients.Caller.addNewMessageToPage(name, message);
+            }
 
             // save to history
             if (_userConnections.TryGetValue(Context.ConnectionId, out ChatData.User user))
             {
                 user.History.Messages.Add(new ChatData.Message()
                 {
-                    FromUser = name,
+                    FromUser = contact,
                     Content = message,
                     Time = DateTime.Now.ToString(),
                 });
@@ -31,67 +48,46 @@ namespace SignalRChat
         }
 
         public override Task OnConnected()
-        {
-            // load all contacts            
-            //foreach (var contact in ChatData.Instance.Users)
-            //{
-            //    var offlineUser = _userConnections.SingleOrDefault(u => u.Key == Context.ConnectionId).Value;
-            //    if (offlineUser == null)
-            //    {
-            //        contact.ConnectionId = Context.ConnectionId;
-            //        AddContact(contact.Name, "[DEP.]");
-
-            //        if (_userConnections.ContainsKey(contact.Name))
-            //            _userConnections[contact.Name] = contact;
-            //        else
-            //        {
-            //            bool ok = _userConnections.TryAdd(contact.Name, contact);
-            //        }
-            //    }
-            //}
-
-            // load history
-
-
+        {           
             return base.OnConnected();
         }
 
         public override Task OnDisconnected()
-        {
-            //_userConnections.TryRemove(Context.ConnectionId, out ChatData.User user);
-
+        {            
             return base.OnDisconnected();
         }
 
         public void Connect(string name)
         {
-            var user = _userConnections.SingleOrDefault(u => u.Key == name).Value;
+            var pair = _userConnections.FirstOrDefault(u => u.Value.Name == name);
+            if (pair.Value != null)
+            {
+                if (!_userConnections.TryRemove(pair.Key, out ChatData.User value))
+                    return;
+            }
+
             var newUser = new ChatData.User()
             {
                 Name = name,
                 ConnectionId = Context.ConnectionId,
             };
 
-            if (_userConnections.TryAdd(Context.ConnectionId, newUser))
+            if (!_userConnections.TryAdd(name, newUser))
+                return;
+
+            // Update contacts list of other clients
+            Clients.Others.clearContacts();
+
+            // add All contact, which will broadcast all messsages
+            Clients.All.addContact("All", "DEP");
+            Clients.Others.addContact(name, "DEP");        // front-end won't add if it is already in list            
+
+            // and update Caller contact list
+            foreach (var u in _userConnections.Values)
             {
-                Clients.Others.clearContacts();
-                Clients.Others.addContact(name, "DEP.");        // front-end won't add if it is already in list
-
-                // and update Caller contact list
-                foreach (var u in _userConnections.Values)
-                {                    
-                    if (u.Name != name)
-                        Clients.Caller.addContact(u.Name, "DEP.");                    
-                }
+                if (u.Name != name)
+                    Clients.Caller.addContact(u.Name, "DEP");
             }
-        }
-
-        public void LoadHistory(string userName)
-        {
-            // load history of personal chat
-            var user = ChatData.Instance.Users.Where(u => u.Name == userName).FirstOrDefault();
-            if (user == null) return;
-
 
         }
     }

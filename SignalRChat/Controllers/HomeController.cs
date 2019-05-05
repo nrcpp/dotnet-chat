@@ -39,20 +39,24 @@ namespace SignalRChat.Controllers
                 return null;
         }
 
-        public ActionResult Chat(string name)
+        public ActionResult Chat(string name, string contact = "All")
         {
             var user = GetOrRegisterUser(name);
             if (user == null)
                 return View("Index");
 
-            return View(user );
-        }
+            var withUser = GetOrRegisterUser(contact);
+            if (withUser == null)
+                return View("Index");
 
+            var model = new Models.ChatModel()
+            {
+                User = user,
+                Contact = withUser,
+                History = "",
+            };
 
-        public ActionResult PersonalChat(string name, string contact, string department)
-        {
-            var user = ChatData.Instance.Users.FirstOrDefault(u => u.Name == contact);  // TODO: == name
-            return View("Chat", user);          // TODO: create view and show personal chat
+            return View(model);
         }
     }
 }

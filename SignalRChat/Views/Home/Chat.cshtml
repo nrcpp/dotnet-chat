@@ -1,4 +1,4 @@
-﻿@model SignalRChat.DAL.ChatData.User
+﻿@model SignalRChat.Models.ChatModel
 @{
     ViewBag.Title = "Chat";
 }
@@ -14,8 +14,10 @@
         <input type="text" id="message" onkeypress="return onEnterDown(event)" />
         <input type="button" id="sendmessage" value="Send" />
         <input type="hidden" id="displayname" />
+        <input type="hidden" id="activecontact" />
+
         <ul id="discussion"><!--chat content goes here--></ul>
-     </div>
+    </div>
 </div>
 
     @section scripts {
@@ -49,8 +51,8 @@
             chat.client.addContact = function (name, department) {
                 if ($('#contacts').html().search(name) != -1) return;       // already added
 
-                var href = '@Url.Action("PersonalChat", "Home")?name=' + htmlEncode($('#myname').text()) + '&contact=' + htmlEncode(name) +
-                    "&department=" + htmlEncode(department);
+                var href = '@Url.Action("Chat", "Home")?name=' + htmlEncode($('#myname').text()) + '&contact=' + htmlEncode(name);
+                    //"&department=" + htmlEncode(department);
                 
                 $('#contacts').append('<a href=' + href + '><li><strong>' + htmlEncode(name)
                     + '</strong><span style="margin-left:50px;">' + htmlEncode(department) + '</span></li></a>');                
@@ -65,11 +67,14 @@
             }
 
             // Get the user name and store it to prepend to messages.
-            var myName = '@Model.Name'; //prompt('Enter your name:', '');
+            var myName = '@Model.User.Name'; //prompt('Enter your name:', '');
             if (myName == '')
                 myName = 'Anonymous';
 
             $('#displayname').val(myName);
+
+            var contactName = '@Model.Contact.Name';
+            $('#activecontact').val(contactName);
             $('#myname').text(myName);
 
             // Set initial focus to message input box.
@@ -83,7 +88,7 @@
                 // send message handler 
                 $('#sendmessage').click(function () {
                     // Call the Send method on the hub.
-                    chat.server.send($('#displayname').val(), $('#message').val());
+                    chat.server.send($('#displayname').val(), $('#activecontact').val(), $('#message').val());
                                         
                     // Clear text box and reset focus for next comment.
                     $('#message').val('').focus();
