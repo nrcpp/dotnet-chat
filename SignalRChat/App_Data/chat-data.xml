@@ -78,4 +78,136 @@
       <Users />
     </Contacts>
   </Users>
+  <Users>
+    <Name>den</Name>
+    <Status>offline</Status>
+    <History>
+      <Messages>
+        <Content>random content 52a6-2fb7-40ae-a680-027a333f290e</Content>
+        <Time>05.05.2019 13:51:02</Time>
+        <FromUser>random user &lt;b&gt;8666-59b3-4efc-adbf-f5d530fbabd0</FromUser>
+      </Messages>
+      <Messages>
+        <Content>random content 3c70-fb1a-4029-8301-2177f2374fc9</Content>
+        <Time>05.05.2019 13:51:35</Time>
+        <FromUser>random user &lt;b&gt;942e-6997-4481-9b4f-dc3a6c0b6bc1</FromUser>
+      </Messages>
+      <Messages>
+        <Content>random content 0b79-1b7d-4094-b51e-a8a1937d83ae</Content>
+        <Time>05.05.2019 13:58:18</Time>
+        <FromUser>random user &lt;b&gt;3c37-7bc9-4c85-9610-6bad3a62d79a</FromUser>
+      </Messages>
+      <Messages>
+        <Content>random content fb2d-13f6-4bbe-9f30-acd257b9dc80</Content>
+        <Time>05.05.2019 14:00:32</Time>
+        <FromUser>random user &lt;b&gt;2924-1387-4c68-b40e-525fc33ff468</FromUser>
+      </Messages>
+      <Messages>
+        <Content>random content 22e7-63c3-4666-9492-6a7e5a03e1f5</Content>
+        <Time>05.05.2019 14:03:00</Time>
+        <FromUser>random user &lt;b&gt;ccfe-bdcc-4222-978a-2e2893e71029</FromUser>
+      </Messages>
+      <Messages>
+        <Content>random content 279e-3754-452d-abf6-c2989f3bc2b9</Content>
+        <Time>05.05.2019 14:05:26</Time>
+        <FromUser>random user &lt;b&gt;974a-ae6a-4149-a5ff-f498245502fa</FromUser>
+      </Messages>
+    </History>
+    <Contacts>
+      <Users />
+    </Contacts>
+  </Users>
+  <Users>
+    <Name>vice</Name>
+    <Status>offline</Status>
+    <History>
+      <Messages>
+        <Content>random content c788-29bd-4788-8ee9-948672d5db8b</Content>
+        <Time>05.05.2019 13:32:55</Time>
+        <FromUser>random user &lt;b&gt;4aba-7f2f-4ee7-980a-3299845723c1</FromUser>
+      </Messages>
+      <Messages>
+        <Content>random content 4566-434f-47c7-9dee-b9d4e6f7e69f</Content>
+        <Time>05.05.2019 13:33:15</Time>
+        <FromUser>random user &lt;b&gt;2c4c-f57e-4eac-8ee0-44c21319c481</FromUser>
+      </Messages>
+      <Messages>
+        <Content>random content e292-8a0e-4c9e-8823-f74852e76f08</Content>
+        <Time>05.05.2019 13:35:03</Time>
+        <FromUser>random user &lt;b&gt;0b2a-d23e-4c5f-aaad-812b3075280d</FromUser>
+      </Messages>
+      <Messages>
+        <Content>random content a2e3-3633-4fe7-b1f6-d198f8f04609</Content>
+        <Time>05.05.2019 13:35:34</Time>
+        <FromUser>random user &lt;b&gt;2194-f07c-48c5-a681-3fd8c88cfdaf</FromUser>
+      </Messages>
+      <Messages>
+        <Content>random content 9a3f-099b-4e19-9c35-150c4548f1c8</Content>
+        <Time>05.05.2019 13:50:56</Time>
+        <FromUser>random user &lt;b&gt;7aae-cb54-42ba-b4b6-cf087cb94195</FromUser>
+      </Messages>
+      <Messages>
+        <Content>random content 8b79-646d-4b5e-b599-e7fe05323ced</Content>
+        <Time>05.05.2019 13:51:38</Time>
+        <FromUser>random user &lt;b&gt;d607-4237-49ea-8a31-16b08df10e6e</FromUser>
+      </Messages>
+      <Messages>
+        <Content>random content fcf2-b8de-46f2-b9fb-19bf996ad1f5</Content>
+        <Time>05.05.2019 13:51:54</Time>
+        <FromUser>random user &lt;b&gt;0529-305c-4504-ad77-6b0fe8052800</FromUser>
+      </Messages>
+    </History>
+    <Contacts>
+      <Users />
+    </Contacts>
+  </Users>
+  <Users>
+    <Name>deb</Name>
+    <Status>offline</Status>
+    <History>
+      <Messages>
+        <Content>random content 0b6f-e758-4c3b-9e2f-1eee6d880eb7</Content>
+        <Time>05.05.2019 13:53:54</Time>
+        <FromUser>random user &lt;b&gt;8cf7-d9c6-4ef3-bfad-6c476b72c42a</FromUser>
+      </Messages>
+      <Messages>
+        <Content>random content f767-5dac-49fb-a9b3-3ad6b3fbddc4</Content>
+        <Time>05.05.2019 13:56:45</Time>
+        <FromUser>random user &lt;b&gt;d46f-60cf-4082-9584-94dd2d77d1a2</FromUser>
+      </Messages>
+      <Messages>
+        <Content>random content 12e8-df82-4db2-a776-8baa1138a03a</Content>
+        <Time>05.05.2019 13:58:10</Time>
+        <FromUser>random user &lt;b&gt;fd8f-372f-483d-8a12-fff5ab37a91b</FromUser>
+      </Messages>
+      <Messages>
+        <Content>random content c831-39d0-44fb-9ed5-cd64d979a4a5</Content>
+        <Time>05.05.2019 13:58:12</Time>
+        <FromUser>random user &lt;b&gt;42ef-308c-4899-8d10-f80ab2a9e1e7</FromUser>
+      </Messages>
+      <Messages>
+        <Content>random content 6a9c-a389-4737-bae7-1df58e3cfc3b</Content>
+        <Time>05.05.2019 14:00:25</Time>
+        <FromUser>random user &lt;b&gt;de80-8af6-455e-8b44-8e2092fd2069</FromUser>
+      </Messages>
+      <Messages>
+        <Content>random content 7f50-c183-48e2-9c10-764464d35ed4</Content>
+        <Time>05.05.2019 14:02:25</Time>
+        <FromUser>random user &lt;b&gt;b027-2c99-44ae-838b-44d3036ecdeb</FromUser>
+      </Messages>
+      <Messages>
+        <Content>random content 7a1b-0f81-432c-ae10-17541a8efe5b</Content>
+        <Time>05.05.2019 14:02:58</Time>
+        <FromUser>random user &lt;b&gt;ac4c-887c-4ab9-8122-423024f940c3</FromUser>
+      </Messages>
+      <Messages>
+        <Content>random content 3b6b-bec6-4bdd-b9bc-96ab8fb1aec8</Content>
+        <Time>05.05.2019 14:05:23</Time>
+        <FromUser>random user &lt;b&gt;4b54-a667-4626-892a-5b2bb8a952dd</FromUser>
+      </Messages>
+    </History>
+    <Contacts>
+      <Users />
+    </Contacts>
+  </Users>
 </ChatData>

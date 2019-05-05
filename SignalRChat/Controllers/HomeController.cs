@@ -47,5 +47,11 @@ namespace SignalRChat.Controllers
 
             return View(user );
         }
+
+        public ActionResult PersonalChat(string name, string contact, string department)
+        {
+            var user = ChatData.Instance.Users.FirstOrDefault(u => u.Name == contact);  // TODO: == name
+            return View("Chat", user);          // TODO: create view and show personal chat
+        }
     }
 }

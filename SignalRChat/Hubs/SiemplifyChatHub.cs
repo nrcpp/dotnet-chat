@@ -14,6 +14,11 @@ namespace SignalRChat
             Clients.All.addNewMessageToPage(name, message);
         }
 
+        public void AddContact(string name, string department)
+        {
+            Clients.All.addContact(name, department);
+        }
+
         public void LoadHistory(string userName)
         {
             //Clients.Others.popup(msg);
