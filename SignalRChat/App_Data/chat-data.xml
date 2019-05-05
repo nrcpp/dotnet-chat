@@ -39,4 +39,12 @@
       <Users />
     </Contacts>
   </Users>
+  <Users>
+    <Name>123</Name>
+    <Status>offline</Status>
+    <History />
+    <Contacts>
+      <Users />
+    </Contacts>
+  </Users>
 </ChatData>
