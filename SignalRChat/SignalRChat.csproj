@@ -139,7 +139,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Hubs\SiemplifyChatHub.cs" />
-    <Compile Include="DAL\ChatDb.cs" />
+    <Compile Include="DAL\ChatData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>

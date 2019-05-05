@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using Microsoft.AspNet.SignalR;
-
+using SignalRChat.DAL;
 
 namespace SignalRChat
 {
@@ -12,7 +14,20 @@ namespace SignalRChat
         {
             // Call the addNewMessageToPage method to update clients.
             Clients.All.addNewMessageToPage(name, message);
+
+            // save to history
+
         }
+
+        public override Task OnConnected()
+        {            
+            // load all contacts            
+            foreach (var c in ChatData.Instance.Users)
+                AddContact(c.Name, "[DEP.]");
+
+            return base.OnConnected();
+        }
+
 
         public void AddContact(string name, string department)
         {
@@ -21,11 +36,10 @@ namespace SignalRChat
 
         public void LoadHistory(string userName)
         {
-            //Clients.Others.popup(msg);
-        }
+            // load history of personal chat
+            var user = ChatData.Instance.Users.Where(u => u.Name == userName).FirstOrDefault();
+            if (user == null) return;
 
-        public void AddUser(string name)
-        {
 
         }
     }

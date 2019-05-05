@@ -15,38 +15,39 @@ namespace SignalRChat.Controllers
             return View();
         }
 
-        public ActionResult Chat(string name)
+        private ChatData.User GetOrRegisterUser(string name)
         {
             var user = ChatData.Instance.Users.FirstOrDefault(u => u.Name == name);
             if (user != null)
-            {
-                // test update history
-                // TODO: remove user
-                user.History.Messages.Add(new ChatData.Message()
-                {
-                    Content = "random content " + Guid.NewGuid().ToString().Substring(4),
-                    Time = DateTime.Now.ToString(),
-                    FromUser = "random user <b>" + Guid.NewGuid().ToString().Substring(4)
-                });
+                return user;
 
-                ChatData.Instance.Save();
-            }
-
+            // register
             else if (!string.IsNullOrWhiteSpace(name))
             {
                 user = new ChatData.User()
                 {
                     Name = name,
                 };
-                ChatData.Instance.Users.Add(user);
 
+                ChatData.Instance.Users.Add(user);
                 ChatData.Instance.Save();
+
+                return user;
             }
+
             else
+                return null;
+        }
+
+        public ActionResult Chat(string name)
+        {
+            var user = GetOrRegisterUser(name);
+            if (user == null)
                 return View("Index");
 
             return View(user );
         }
+
 
         public ActionResult PersonalChat(string name, string contact, string department)
         {

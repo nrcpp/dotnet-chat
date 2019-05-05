@@ -51,11 +51,11 @@ input[type="checkbox"].input-validation-error {
 }
 
 .left {
-    width: 25%;
+    width: 35%;
 }
 
 .right {
-    width: 75%;
+    width: 65%;
 }
 
 /* Clear floats after the columns */

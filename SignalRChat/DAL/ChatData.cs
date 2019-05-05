@@ -56,6 +56,15 @@ namespace SignalRChat.DAL
 
         private static string DataFile => System.Web.Hosting.HostingEnvironment.MapPath("~/App_Data/chat-data.xml");
 
+        public ChatData()
+        {
+            if (!Users.Any())            
+                Users.Add(new User()
+                {
+                    Name = "All"
+                });            
+        }
+
 
         #region Save/Load and serialization
 

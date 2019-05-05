@@ -49,11 +49,15 @@
             chat.client.addContact = function (name, department) {               
                 var href = '@Url.Action("PersonalChat", "Home")?name=' + htmlEncode($('#myname').text()) + '&contact=' + htmlEncode(name) +
                     "&department=" + htmlEncode(department);
-
-                // http://localhost:60000/Home/PersonalChat?name=$(%27#username').val()&contact=den&department=sad
+                
                 $('#contacts').append('<a href=' + href + '><li><strong>' + htmlEncode(name)
-                    + '</strong>[' + htmlEncode(department) + ']</li></a>');                
+                    + '</strong><span style="margin-left:50px;">' + htmlEncode(department) + '</span></li></a>');                
             };
+
+
+            function addContact(name) {
+                chat.client.addContact(name, 'DP');
+            }
 
             // Get the user name and store it to prepend to messages.
             var myName = '@Model.Name'; //prompt('Enter your name:', '');
@@ -68,13 +72,13 @@
 
             // Start the connection.
             $.connection.hub.start().done(function () {
+                //chat.server.onConnect($('#myname').text(myName), 'DP');
+
+                // send message handler 
                 $('#sendmessage').click(function () {
                     // Call the Send method on the hub.
                     chat.server.send($('#displayname').val(), $('#message').val());
-                    
-                    // TODO: do add contacts on user connection above
-                    chat.server.addContact($('#displayname').val(), $('#message').val());
-
+                                        
                     // Clear text box and reset focus for next comment.
                     $('#message').val('').focus();
                 });
