@@ -1,6 +1,22 @@
 <ChatData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Users>
-    <Name>All</Name>
+    <Name>u1</Name>
+    <Status>offline</Status>
+    <History />
+    <Contacts>
+      <Users />
+    </Contacts>
+  </Users>
+  <Users>
+    <Name>u2</Name>
+    <Status>offline</Status>
+    <History />
+    <Contacts>
+      <Users />
+    </Contacts>
+  </Users>
+  <Users>
+    <Name>u3</Name>
     <Status>offline</Status>
     <History />
     <Contacts>
@@ -16,103 +32,7 @@
     </Contacts>
   </Users>
   <Users>
-    <Name>All</Name>
-    <Status>offline</Status>
-    <History />
-    <Contacts>
-      <Users />
-    </Contacts>
-  </Users>
-  <Users>
-    <Name>All</Name>
-    <Status>offline</Status>
-    <History />
-    <Contacts>
-      <Users />
-    </Contacts>
-  </Users>
-  <Users>
-    <Name>All</Name>
-    <Status>offline</Status>
-    <History />
-    <Contacts>
-      <Users />
-    </Contacts>
-  </Users>
-  <Users>
-    <Name>123</Name>
-    <Status>offline</Status>
-    <History />
-    <Contacts>
-      <Users />
-    </Contacts>
-  </Users>
-  <Users>
-    <Name>Denis Kazakov</Name>
-    <Status>offline</Status>
-    <History />
-    <Contacts>
-      <Users />
-    </Contacts>
-  </Users>
-  <Users>
-    <Name>asd</Name>
-    <Status>offline</Status>
-    <History />
-    <Contacts>
-      <Users />
-    </Contacts>
-  </Users>
-  <Users>
-    <Name>dsa</Name>
-    <Status>offline</Status>
-    <History />
-    <Contacts>
-      <Users />
-    </Contacts>
-  </Users>
-  <Users>
-    <Name>Den</Name>
-    <Status>offline</Status>
-    <History />
-    <Contacts>
-      <Users />
-    </Contacts>
-  </Users>
-  <Users>
-    <Name>den</Name>
-    <Status>offline</Status>
-    <History />
-    <Contacts>
-      <Users />
-    </Contacts>
-  </Users>
-  <Users>
-    <Name>Z</Name>
-    <Status>offline</Status>
-    <History />
-    <Contacts>
-      <Users />
-    </Contacts>
-  </Users>
-  <Users>
-    <Name>z z</Name>
-    <Status>offline</Status>
-    <History />
-    <Contacts>
-      <Users />
-    </Contacts>
-  </Users>
-  <Users>
-    <Name>z zs</Name>
-    <Status>offline</Status>
-    <History />
-    <Contacts>
-      <Users />
-    </Contacts>
-  </Users>
-  <Users>
-    <Name>sa</Name>
+    <Name>u5</Name>
     <Status>offline</Status>
     <History />
     <Contacts>

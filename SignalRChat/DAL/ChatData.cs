@@ -45,6 +45,9 @@ namespace SignalRChat.DAL
 
             public History History { get; set; } = new History();
             public Contacts Contacts { get; set; } = new Contacts();
+
+            [XmlIgnore]
+            public string ConnectionId { get; set; } = "";
         }
 
 
@@ -56,15 +59,18 @@ namespace SignalRChat.DAL
 
         private static string DataFile => System.Web.Hosting.HostingEnvironment.MapPath("~/App_Data/chat-data.xml");
 
-        public ChatData()
+        public static void AddUserIfNotExists(User user)
         {
-            if (!Users.Any())            
-                Users.Add(new User()
-                {
-                    Name = "All"
-                });            
-        }
+            var existing = Instance.Users.FirstOrDefault(u => user.Name == u.Name);
+            if (existing != null)
+            {
+                return;
+            }
 
+            Instance.Users.Add(user);
+            Instance.Save();
+
+        }
 
         #region Save/Load and serialization
 
@@ -125,6 +131,14 @@ namespace SignalRChat.DAL
 
                 string xml = System.IO.File.ReadAllText(DataFile);
                 var result = Deserialize(xml);
+
+                if (result?.Users?.Any(u => u.Name == "All") == false)
+                {
+                    result.Users.Add(new User()
+                    {
+                        Name = "All"
+                    });                    
+                }
 
                 return result;
             }

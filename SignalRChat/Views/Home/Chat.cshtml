@@ -46,7 +46,9 @@
             
 
             // callback from chat hub to add contact 
-            chat.client.addContact = function (name, department) {               
+            chat.client.addContact = function (name, department) {
+                if ($('#contacts').html().search(name) != -1) return;       // already added
+
                 var href = '@Url.Action("PersonalChat", "Home")?name=' + htmlEncode($('#myname').text()) + '&contact=' + htmlEncode(name) +
                     "&department=" + htmlEncode(department);
                 
@@ -54,6 +56,9 @@
                     + '</strong><span style="margin-left:50px;">' + htmlEncode(department) + '</span></li></a>');                
             };
 
+            chat.client.clearContacts = function () {
+                $('#contacts').empty();
+            };
 
             function addContact(name) {
                 chat.client.addContact(name, 'DP');
@@ -72,7 +77,8 @@
 
             // Start the connection.
             $.connection.hub.start().done(function () {
-                //chat.server.onConnect($('#myname').text(myName), 'DP');
+
+                chat.server.connect($('#displayname').val());
 
                 // send message handler 
                 $('#sendmessage').click(function () {
