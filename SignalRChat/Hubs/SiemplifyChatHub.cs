@@ -35,16 +35,8 @@ namespace SignalRChat
                 Clients.Caller.addNewMessageToPage(name, message);
             }
 
-            // save to history
-            if (_userConnections.TryGetValue(Context.ConnectionId, out ChatData.User user))
-            {
-                user.History.Messages.Add(new ChatData.Message()
-                {
-                    FromUser = contact,
-                    Content = message,
-                    Time = DateTime.Now.ToString(),
-                });
-            }
+            // save to history            
+            ChatData.AddMessageToHistory(name, contact, message);            
         }
 
         public override Task OnConnected()

@@ -13,13 +13,7 @@ namespace SignalRChat.DAL
     {
         readonly static ChatData _instance = Load();
         public static ChatData Instance => _instance;
-
-        public class History
-        {
-            [XmlElement("Messages")]
-            public List<Message> Messages { get; set; } = new List<Message>();
-        }
-
+        
         public class Message
         {
             [XmlElement("Content")]
@@ -28,23 +22,25 @@ namespace SignalRChat.DAL
             [XmlElement("Time")]
             public string Time { get; set; } = "";
 
-            public string FromUser { get; set; } = "";
-        }
-
-        public class Contacts
-        {
-            public List<string> Users { get; set; } = new List<string>();
+            [XmlElement("ContactUser")]
+            public string ContactUser { get; set; } = "";
         }
 
 
         // 
         public class User
         {
+            [XmlElement("Name")]
             public string Name { get; set; } = "";
+
+            [XmlElement("Status")]
             public string Status { get; set; } = OfflineStatus;
 
-            public History History { get; set; } = new History();
-            public Contacts Contacts { get; set; } = new Contacts();
+            [XmlArray("HistoryMessages")]            
+            public List<Message> HistoryMessages { get; set; } = new List<Message>();
+
+            [XmlArray("Contacts")]            
+            public List<string> Contacts { get; set; } = new List<string>();
 
             [XmlIgnore]
             public string ConnectionId { get; set; } = "";
@@ -68,8 +64,35 @@ namespace SignalRChat.DAL
             }
 
             Instance.Users.Add(user);
-            Instance.Save();
+            Instance.Save();        
+        }
 
+        public static void AddMessageToHistory(string userName, string contatName, string message)
+        {
+            var user = Instance.Users.FirstOrDefault(u => u.Name == userName);
+            var from = Instance.Users.FirstOrDefault(u => u.Name == contatName);
+
+            if (user != null)
+            {
+                user.HistoryMessages.Add(new Message()
+                {
+                    Content = message,
+                    ContactUser = contatName,                    
+                    Time = DateTime.Now.ToString(),
+                });
+            }
+
+            if (from != null)
+            {
+                from.HistoryMessages.Add(new Message()
+                {
+                    Content = message,
+                    ContactUser = userName,                    
+                    Time = DateTime.Now.ToString(),
+                });
+            }
+
+            Instance.Save();
         }
 
         #region Save/Load and serialization

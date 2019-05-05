@@ -2,41 +2,35 @@
   <Users>
     <Name>u1</Name>
     <Status>offline</Status>
-    <History />
-    <Contacts>
-      <Users />
-    </Contacts>
+    <HistoryMessages>
+      <Message>
+        <Content>123</Content>
+        <Time>05.05.2019 21:48:35</Time>
+        <ContactUser>u2</ContactUser>
+      </Message>
+      <Message>
+        <Content>12331</Content>
+        <Time>05.05.2019 21:49:27</Time>
+        <ContactUser>u2</ContactUser>
+      </Message>
+    </HistoryMessages>
+    <Contacts />
   </Users>
   <Users>
     <Name>u2</Name>
     <Status>offline</Status>
-    <History />
-    <Contacts>
-      <Users />
-    </Contacts>
-  </Users>
-  <Users>
-    <Name>u3</Name>
-    <Status>offline</Status>
-    <History />
-    <Contacts>
-      <Users />
-    </Contacts>
-  </Users>
-  <Users>
-    <Name>All</Name>
-    <Status>offline</Status>
-    <History />
-    <Contacts>
-      <Users />
-    </Contacts>
-  </Users>
-  <Users>
-    <Name>u5</Name>
-    <Status>offline</Status>
-    <History />
-    <Contacts>
-      <Users />
-    </Contacts>
+    <HistoryMessages>
+      <Message>
+        <Content>123</Content>
+        <Time>05.05.2019 21:48:35</Time>
+        <ContactUser>u1</ContactUser>
+      </Message>
+      <Message>
+        <Content>12331</Content>
+        <Time>05.05.2019 21:49:27</Time>
+        <ContactUser>u1</ContactUser>
+      </Message>
+    </HistoryMessages>
+    <Contacts />
   </Users>
 </ChatData>
