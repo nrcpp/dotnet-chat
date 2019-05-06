@@ -22,8 +22,11 @@ namespace SignalRChat.DAL
             [XmlElement("Time")]
             public string Time { get; set; } = "";
 
-            [XmlElement("ContactUser")]
-            public string ContactUser { get; set; } = "";
+            [XmlElement("FromUser")]
+            public string FromUser { get; set; } = "";
+
+            [XmlElement("ToUser")]
+            public string ToUser { get; set; } = "";
         }
 
 
@@ -35,20 +38,24 @@ namespace SignalRChat.DAL
 
             [XmlElement("Status")]
             public string Status { get; set; } = OfflineStatus;
-
-            [XmlArray("HistoryMessages")]            
-            public List<Message> HistoryMessages { get; set; } = new List<Message>();
-
+            
             [XmlArray("Contacts")]            
             public List<string> Contacts { get; set; } = new List<string>();
 
             [XmlIgnore]
             public string ConnectionId { get; set; } = "";
+
+            [XmlIgnore]
+            public User ActiveContact { get; set; }
         }
 
 
         [XmlElement("Users")]
         public List<User> Users { get; set; } = new List<User>();
+
+        [XmlArray("HistoryMessages")]
+        public List<Message> HistoryMessages { get; set; } = new List<Message>();
+
 
         public const string OnlineStatus = "online";
         public const string OfflineStatus = "offline";
@@ -67,27 +74,30 @@ namespace SignalRChat.DAL
             Instance.Save();        
         }
 
-        public static void AddMessageToHistory(string userName, string contatName, string message)
+
+        public static bool IsChatIsActive(string userName, string contactName)
         {
             var user = Instance.Users.FirstOrDefault(u => u.Name == userName);
-            var from = Instance.Users.FirstOrDefault(u => u.Name == contatName);
+            var from = Instance.Users.FirstOrDefault(u => u.Name == contactName);
 
-            if (user != null)
+            if (user == null || from == null)
+                return false;
+
+            return user.ActiveContact?.Name == from.Name;
+        }
+
+        public static void AddMessageToHistory(string userName, string contactName, string message)
+        {
+            var user = Instance.Users.FirstOrDefault(u => u.Name == userName);
+            var from = Instance.Users.FirstOrDefault(u => u.Name == contactName);
+
+            if (user != null && from != null)
             {
-                user.HistoryMessages.Add(new Message()
+                Instance.HistoryMessages.Add(new Message()
                 {
                     Content = message,
-                    ContactUser = contatName,                    
-                    Time = DateTime.Now.ToString(),
-                });
-            }
-
-            if (from != null)
-            {
-                from.HistoryMessages.Add(new Message()
-                {
-                    Content = message,
-                    ContactUser = userName,                    
+                    FromUser = userName,                    
+                    ToUser = contactName,
                     Time = DateTime.Now.ToString(),
                 });
             }

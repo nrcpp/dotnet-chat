@@ -14,25 +14,46 @@ namespace SignalRChat
     {
         static ConcurrentDictionary<string, ChatData.User> _userConnections = new ConcurrentDictionary<string, ChatData.User>();
 
-        private string GetClientIdByName(string name)
+        public static void ActivateChat(string userName, string contactName)
         {
-            return _userConnections.Where(u => u.Value.Name == name).FirstOrDefault().Value?.ConnectionId;            
+            var user = GetContactByName(userName);
+            var contact = GetContactByName(contactName);
+
+            if (user != null)
+                user.ActiveContact = contact;
+
+            if (contact != null)
+                contact.ActiveContact = user;
+        }
+
+        private static ChatData.User GetContactByName(string name)
+        {
+            name = name.ToLower().Trim();
+            return _userConnections.Where(u => u.Value.Name.Equals(name, StringComparison.OrdinalIgnoreCase)).FirstOrDefault().Value;            
         }
 
         public void Send(string name, string contact, string message)
         {
+            string time = DateTime.Now.ToString();
 
             // Call the addNewMessageToPage method to update clients.
             if (contact == "All")
-                Clients.All.addNewMessageToPage(name, message);
+            {
+                // we filter messages with active contacts, so it won't appear on personal chats
+                Clients.All.addNewMessageToPage(name, contact, message, time);
+            }
+
             else
             {
-                var connectionId = GetClientIdByName(contact);
-                if (connectionId == null)
-                    return;
+                var contactUser = GetContactByName(contact);
+                if (contactUser?.ConnectionId != null)
+                {
+                    // here we have to check, if receiever is active
+                    if (contactUser.ActiveContact?.Name == name)
+                        Clients.Client(contactUser.ConnectionId).addNewMessageToPage(name, contact, message, time);
+                }                
 
-                Clients.Client(connectionId).addNewMessageToPage(name, message);
-                Clients.Caller.addNewMessageToPage(name, message);
+                Clients.Caller.addNewMessageToPage(name, contact, message, time);
             }
 
             // save to history            
@@ -49,7 +70,7 @@ namespace SignalRChat
             return base.OnDisconnected();
         }
 
-        public void Connect(string name)
+        public void Connect(string name, string contact)
         {
             var pair = _userConnections.FirstOrDefault(u => u.Value.Name == name);
             if (pair.Value != null)
@@ -66,6 +87,8 @@ namespace SignalRChat
 
             if (!_userConnections.TryAdd(name, newUser))
                 return;
+
+            ActivateChat(name, contact);
 
             // Update contacts list of other clients
             Clients.Others.clearContacts();

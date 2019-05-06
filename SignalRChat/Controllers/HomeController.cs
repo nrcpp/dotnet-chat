@@ -39,21 +39,35 @@ namespace SignalRChat.Controllers
                 return null;
         }
 
+
         public ActionResult Chat(string name, string contact = "All")
         {
             var user = GetOrRegisterUser(name);
             if (user == null)
                 return View("Index");
 
-            var withUser = GetOrRegisterUser(contact);
-            if (withUser == null)
+            var contactUser = GetOrRegisterUser(contact);
+            if (contactUser == null)
                 return View("Index");
+
+            bool IsMessageInHistory(ChatData.Message historyMsg)
+            {
+                if (historyMsg.FromUser == name && historyMsg.ToUser == contact) return true;
+
+                if (historyMsg.ToUser == name && historyMsg.FromUser == contact) return true;
+
+                if (contact == "All" && historyMsg.ToUser == "All") return true;
+
+                //if (historyMsg.ToUser == "All" && historyMsg.FromUser == name) return true;
+
+                return false;
+            }
 
             var model = new Models.ChatModel()
             {
                 User = user,
-                Contact = withUser,
-                History = "",
+                Contact = contactUser,                
+                History = ChatData.Instance.HistoryMessages.Where(m => IsMessageInHistory(m)).ToList(),        // history for this user with the name 'name'
             };
 
             return View(model);

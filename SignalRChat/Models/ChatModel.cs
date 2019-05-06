@@ -10,6 +10,6 @@ namespace SignalRChat.Models
     {
         public ChatData.User User { get; set; } 
         public ChatData.User Contact { get; set; }
-        public string History { get; set; } = "";
+        public List<ChatData.Message> History { get; set; } = new List<ChatData.Message>();
     }
 }
