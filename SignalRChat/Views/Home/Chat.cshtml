@@ -59,9 +59,9 @@
             chat.client.addContact = function (name, department) {
                 if ($('#contacts').html().search(name) != -1) return;       // already added
 
-                var href = '@Url.Action("Chat", "Home")?name=' + htmlEncode($('#myname').text()) + '&contact=' + htmlEncode(name);
+                var href = '@Url.Action("Chat", "Home")?name=' + escape($('#myname').text()) + '&contact=' + escape(name);
                 //"&department=" + htmlEncode(department);
-
+                
                 $('#contacts').append('<a href=' + href + '><li><strong>' + htmlEncode(name)
                     + '</strong><span style="margin-left:50px;">' + htmlEncode(department) + '</span></li></a>');
             };

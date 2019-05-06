@@ -14,6 +14,21 @@
     <Status>offline</Status>
     <Contacts />
   </Users>
+  <Users>
+    <Name>den ka</Name>
+    <Status>offline</Status>
+    <Contacts />
+  </Users>
+  <Users>
+    <Name>z z</Name>
+    <Status>offline</Status>
+    <Contacts />
+  </Users>
+  <Users>
+    <Name>Yana Dutka</Name>
+    <Status>offline</Status>
+    <Contacts />
+  </Users>
   <HistoryMessages>
     <Message>
       <Content>as</Content>
@@ -56,6 +71,72 @@
       <Time>06.05.2019 11:15:33</Time>
       <FromUser>u2</FromUser>
       <ToUser>u1</ToUser>
+    </Message>
+    <Message>
+      <Content>hi den</Content>
+      <Time>06.05.2019 15:21:58</Time>
+      <FromUser>z z</FromUser>
+      <ToUser>den ka</ToUser>
+    </Message>
+    <Message>
+      <Content>hi z z!!</Content>
+      <Time>06.05.2019 15:22:20</Time>
+      <FromUser>den ka</FromUser>
+      <ToUser>All</ToUser>
+    </Message>
+    <Message>
+      <Content>hi zz !</Content>
+      <Time>06.05.2019 15:22:45</Time>
+      <FromUser>den ka</FromUser>
+      <ToUser>z z</ToUser>
+    </Message>
+    <Message>
+      <Content>what the hell?</Content>
+      <Time>06.05.2019 15:22:53</Time>
+      <FromUser>z z</FromUser>
+      <ToUser>den ka</ToUser>
+    </Message>
+    <Message>
+      <Content>Hi Yana!!</Content>
+      <Time>06.05.2019 15:23:22</Time>
+      <FromUser>den ka</FromUser>
+      <ToUser>Yana Dutka</ToUser>
+    </Message>
+    <Message>
+      <Content>hi Den</Content>
+      <Time>06.05.2019 15:24:02</Time>
+      <FromUser>Yana Dutka</FromUser>
+      <ToUser>den ka</ToUser>
+    </Message>
+    <Message>
+      <Content>what's your business?</Content>
+      <Time>06.05.2019 15:24:25</Time>
+      <FromUser>den ka</FromUser>
+      <ToUser>Yana Dutka</ToUser>
+    </Message>
+    <Message>
+      <Content>YAHOOOOO!</Content>
+      <Time>06.05.2019 15:24:52</Time>
+      <FromUser>z z</FromUser>
+      <ToUser>All</ToUser>
+    </Message>
+    <Message>
+      <Content>how are you?</Content>
+      <Time>06.05.2019 15:25:09</Time>
+      <FromUser>z z</FromUser>
+      <ToUser>All</ToUser>
+    </Message>
+    <Message>
+      <Content>are you ready?</Content>
+      <Time>06.05.2019 15:25:25</Time>
+      <FromUser>z z</FromUser>
+      <ToUser>All</ToUser>
+    </Message>
+    <Message>
+      <Content>every time</Content>
+      <Time>06.05.2019 15:25:44</Time>
+      <FromUser>den ka</FromUser>
+      <ToUser>All</ToUser>
     </Message>
   </HistoryMessages>
 </ChatData>
